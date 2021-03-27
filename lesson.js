@@ -29,6 +29,7 @@ user.weight = 100;
 console.log(user);
 
 // 実用例
+console.log(users.state.age);
 const users = [
   {
     id: 123,
