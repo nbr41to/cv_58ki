@@ -1,5 +1,5 @@
 'use strict'
-
+{
 function cointoss() {
   const num = Math.random(); // numは0.0〜1.0のランダムな数値
 
@@ -13,4 +13,5 @@ function cointoss() {
   
 for (let i = 0; i < 10; i++) {
   cointoss();
+}
 }
