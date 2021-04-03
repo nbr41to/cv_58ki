@@ -1,68 +1,36 @@
-// 条件分岐
+// for文 処理を繰り返す
 
-let score = Math.random() * 100;
+const nums = [1, 2, 3, 4, 5];
 
-if (undefined) {
-  score = score * 2;
-  console.log('trueだよ');
-} else {
-  console.log('falseだよ');
-  score = score / 2;
+for (let i = 0; i < 5; i++) {
+  // 繰り返す処理
+  console.log(nums[i] * 2);
 }
-console.log(score);
 
-// 三項演算子
-console.log(score > 50 ? 'おめでとう' : '残念');
+// while文 処理を繰り返す
 
-// 条件式
-true, false; //真偽値
+// let i = 0;
 
-console.log('文字列');
-console.log(123);
-console.log(true);
-console.log(false);
-console.log(undefined);
-console.log(null);
-
-// switch
-
-const ransu = Math.floor(Math.random() * 3);
-console.log(ransu); // 0,1,2
-
-const colors = ['red', 'yellow', 'blue'];
-const signal = colors[ransu];
-console.log(signal);
-
-// let signal = 'red';
-// if (ransu === 0) {
-//   signal = 'red';
-// } else if (ransu === 1) {
-//   signal = 'yellow';
-// } else if (ransu === 2) {
-//   signal = 'blue';
+// while (i < 5) {
+//   // 繰り返す処理
+//   console.log(nums[i] * 2);
+//   i++;
 // }
 
-switch (signal) {
-  case 'red':
-    console.log('止まりなさい！');
-    break;
-  case 'yellow':
-    console.log('Be careful');
-    break;
-  case 'blue':
-    console.log('進め');
-    break;
-  default:
-    console.log('あなたは何色ですか？');
-    break;
-}
+// do while
 
-if (signal === 'red') {
-  console.log('止まりなさい！');
-} else if (signal === 'yellow') {
-  console.log('Be careful');
-} else if (signal === 'blue') {
-  console.log('進め');
-} else {
-  console.log('あなたは何色ですか？');
-}
+let power = 99;
+let i = 0;
+
+do {
+  if (power >= 99) {
+    console.log('powerは最大です');
+  } else {
+    power += 1;
+    i++;
+  }
+  power += 1;
+  i++;
+} while (i < 3);
+
+console.log(power);
