@@ -1,105 +1,81 @@
-// // for文 処理を繰り返す
+// オブジェクト指向
 
-// const nums = [1, 2, 3, 4, 5];
+// const obj = {
+//   method: () => { redice(); },
+//   users: {
+//     123: { name: 'adadada', age: 123, hobby: ['soccer', 'programming'] },
+//     123: { name: 'adadada', age: 123 },
+//     123: { name: 'adadada', age: 123 },
+//     123: { name: 'adadada', age: 123 },
+//   },
+//   error: false
+// };
 
-// for (let i = 0; i < 5; i++) {
-//   // 繰り返す処理
-//   console.log(nums[i] * 2);
+// obj.method();
+
+// const aaa = { 100: 'foobar' };
+// console.log(aaa['100']);
+
+
+// 高階関数...コールバック関数
+
+// const add2 = x => x + 2;
+
+// function twice(func, x) {
+//   return func(x);
 // }
 
-// // while文 処理を繰り返す
+// const result = twice(add2, 10);
+// console.log(result); //=> 14
 
-// // let i = 0;
 
-// // while (i < 5) {
-// //   // 繰り返す処理
-// //   console.log(nums[i] * 2);
-// //   i++;
-// // }
+// const items = ['a', 'b', 'c'];
 
-// // do while
+// const func = (item) => { console.log(item); };
 
-// let power = 98;
-// let i = 0;
+// items.map(func);
+// const newItems = items.map((item) => {
+//   console.log(item);
+//   return item + 'です';
+// });
+// console.log(newItems);
 
-// do {
-//   console.log(`今のpower:${power}`);
-//   if (power >= 99) {
-//     console.log('powerは最大です');
-//     i += 3;
-//   } else {
-//     power += 1;
-//     i++;
-//   }
-// } while (i < 3);
+// items.forEach((item) => { console.log(item); });
 
-// console.log(power);
 
-// // 関数
-
-// function iii() {
-
+// window.alert('ara-todayo');
+// window.confirm('ara-todayo');
+// if (window.confirm('ara-todayo')) {
+//   console.log('trueきた');
+// } else {
+//   console.log('falseきた');
 // }
 
-// const aaa = function () {
+const yourHand = window.prompt('0~2の数字を入力してください');
 
-// };
-
-// // アロー関数
-// const uuu = () => {
-//   console.log(power);
-//   console.log(power);
-//   console.log(power);
-//   console.log(power);
-//   console.log(power);
-//   console.log(power);
-// };
-
-// // 戻り値
-// const stringReturn = () => {
-//   if ('aa') {
-
-//     return ("文字だよ");
-//   }
-// };
-
-// console.log(stringReturn());
-
-// // 引数
-
-// const greet = (name, age) => {
-//   console.log(`こんにちは！${name}さん.あなたは${age}歳です`);
-// };
-
-// greet(123, 'nobuyuki');
-
-// メソッド
-// 関数？を呼び出す
-
-const aaa = 'adadadadada';
-const bbb = [1, 2, 3, 4, 5, 6,];
-
-const cards = [
-  { suit: '♥', num: 1 },
-  { suit: '◆', num: 1 },
-  { suit: '♥', num: 1 },
-  { suit: '♥', num: 1 },
-  { suit: '♥', num: 1 },
-  { suit: '♥', num: 1 },
-  { suit: '♥', num: 1 },
-  { suit: '♥', num: 1 },
-  { suit: '♥', num: 1 },
-  { suit: '♥', num: 1 },
-  { suit: '♥', num: 1 },
-  { suit: '♥', num: 1 },
-  { suit: '♥', num: 1 },
-  { suit: '♥', num: 1 },
-  { suit: '♥', num: 1 },
-  { suit: '♥', num: 1 },
-  { suit: '♥', num: 1 },
-  { suit: '♥', num: 1 },
-];
-
-if (cards[0].num === cards[0].num) {
-  point++;
+if (yourHand % 3 === 0) {
+  console.log('勝ちました');
+} else if (yourHand % 3 === 1) {
+  console.log('負けました');
+} else if (yourHand % 3 === 2) {
+  console.log('あいこです.');
+} else {
+  console.log('あなたとはじゃんけんしません');
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
