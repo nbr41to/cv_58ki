@@ -11,7 +11,7 @@ const items = [
 
 console.log(items[0].n) //=> 100
 console.log(items[1].a.b[0]) //=> abc
-console.log(items[1].c['100']) //=> foobar
+console.log(items[1].c[100]) //=> foobar
 
 //課題05-2//
 
