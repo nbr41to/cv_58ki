@@ -14,5 +14,5 @@ function scoring(score) {
     }
 }
 scores.forEach((score) => {
-    console.log(scoring(score));
+    (scoring(score));
 })
