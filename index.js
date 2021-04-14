@@ -9,77 +9,57 @@
 2: あいこ
 */
 
-
-// const janken = (player) => {
-//   const cpu = Math.floor(random * 3 );
-//   if (cpu % 3 === 0) {
-//   } else if (cpu % 3 === 1) {
-//     console.log('負けました');
-//   } else if (cpu % 3 === 2) {
-//     console.log('あいこです.');
-//   } else {
-//     // console.log('あなたとはじゃんけんしません');
-//   }
-
-// }
-
-const janken = (playerSelect) => {
+const janken = playerSelect => {
   const cpuSelect = Math.floor(Math.random() * 3);
+  const hand = ["✊","✌", "✋"];
   // console.log(cpuSelect);
   // console.log(playerSelect);
 
   if (playerSelect === cpuSelect) {    // あいこ
-    result = 2;
-
+    result = "あいこでした。";
   } else {
     // あいこじゃなかったら勝敗を決める
     if (playerSelect === 0) {    // playerはグー
       if (cpuSelect === 1) {     // cpuはチョキ
-        result = 1;
+        result = "勝ちました。";
       } else {                  // cpuはパー
-        result = 0;
+        result = "負けました。";
       }
 
     } else if (playerSelect === 1) {     // playerはチョキ
       if (cpuSelect === 0) {     // cpuはグー
-        result = 0;
+        result = "負けました。";
       } else {                  // cpuはパー
-        result = 1;
+        result = "勝ちました。";
       }
 
     } else {                    // playerはパー
       if (cpuSelect === 0) {     // cpuはグー
-        result = 1;
+        result = "勝ちました。";
       } else {                  // cpuはチョキ
-        result = 0;
+        result = "負けました。";
       }
     }
   }
   console.log(result);
-}
 
-document.getElementById("gu").onclick = janken(0);
-document.getElementById("tyo").onclick = janken(1);
-document.getElementById("pa").onclick = janken(2);
-const hand = ["✊","✌", "✋"];
-
-
-if (result == 0) {
-  document.getElementById('result').innerHTML =`
-  <p>まけ</P>
-  `;
-  // <P>あなた：${hand[playerSelect]}</P>
-  // <P>CPU：${hand[cpuSelect]}</P>
-} else if (result === 1) {
-  document.getElementById('result').innerHTML =`
-  <p>かち</P>
-  `;
-  // <P>あなた：${hand[playerSelect]}</P>
-  // <P>CPU：${hand[cpuSelect]}</P>
-} else {
-  document.getElementById('result').innerHTML =`
-  <p>あいこ</P>
-  `;
-  // <P>あなた：${hand[playerSelect]}</P>
-  // <P>CPU：${hand[cpuSelect]}</P>
+  if (result === "負けました。") {
+    document.getElementById('result').innerHTML =`
+    <p>まけ</P>
+    <P>あなた：${hand[playerSelect]}</P>
+    <P>CPU：${hand[cpuSelect]}</P>
+    `;
+  } else if (result === "勝ちました。") {
+    document.getElementById('result').innerHTML =`
+    <p>かち</P>
+    <P>あなた：${hand[playerSelect]}</P>
+    <P>CPU：${hand[cpuSelect]}</P>
+    `;
+  } else {
+    document.getElementById('result').innerHTML =`
+    <p>あいこ</P>
+    <P>あなた：${hand[playerSelect]}</P>
+    <P>CPU：${hand[cpuSelect]}</P>
+    `;
+  }
 }
