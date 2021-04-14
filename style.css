@@ -7,6 +7,10 @@ a {
     text-decoration: none;
 }
 
+button {
+    font-size: 4vw;
+}
+
 #reset {
     margin: 60vw auto;
 }
