@@ -1,0 +1,12 @@
+html {
+    font-size: 4vw;
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+}
+
+#reset {
+    margin: 60vw auto;
+}
