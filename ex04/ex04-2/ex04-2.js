@@ -1,23 +1,18 @@
 function scoring(score) {
   if (score >= 90) {
-    const  judge = "秀";
-    return judge;
+    return "秀";
     // console.log('秀')
   } else if (score >= 75) {
-    const  judge = "優";
-    return judge;
+    return "優";
     // console.log('優')
   } else if (score >= 60) {
-    const  judge = "良";
-    return judge;
+    return "良";
     // console.log('良')
   } else if (score >= 30) {
-    const  judge = "可";
-    return judge;
+    return "可";
     // console.log('可')
   } else {
-    const  judge = "不可";
-    return judge;
+    return "不可";
     // console.log('不可')
   }
 }
