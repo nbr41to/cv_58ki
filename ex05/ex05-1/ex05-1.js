@@ -1,6 +1,6 @@
 const items = [
   { n: 100 },
-  { a: { b: ['abc'] }, c: {['100']: 'foober' } },
+  { a: { b: ['abc'] }, c: {100: 'foobar' } },
 ]
 
 console.log(items[0].n) //=> 100
