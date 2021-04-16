@@ -1,0 +1,14 @@
+button {
+    background-color: rgb(129, 179, 255);
+}
+
+.subject {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#result {
+    font-size: 18px;
+    font-weight: bold;
+    color: rgb(255, 100, 129);
+}
