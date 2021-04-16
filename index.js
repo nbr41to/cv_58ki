@@ -33,11 +33,28 @@ addyou();
 
 
 //clickEvent
-document.addEventListener('click', function (event) {
+let btn1 = document.querySelectorAll('button')[0]
+let btn2 = document.querySelectorAll('button')[1]
+let btn3 = document.querySelectorAll('button')[2]
+
+btn1.addEventListener('click', function (event) {
 
   meehandw = event.target.textContent;
+  change();
+}, false);
+btn2.addEventListener('click', function (event) {
+
+  meehandw = event.target.textContent;
+  change();
+}, false);
+btn3.addEventListener('click', function (event) {
+
+  meehandw = event.target.textContent;
+  change();
+}, false);
   //改善点：ボタン以外も押せてしまう
 
+  function change () {
   //you
   const n = Math.floor(Math.random() * 3);
   if (n === 0) {
@@ -76,7 +93,7 @@ document.addEventListener('click', function (event) {
   funcgame();
   funcmee();
   funcyou();
-
+}
   
-}, false);
+// }, false);
 //clickEvent
