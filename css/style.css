@@ -1,0 +1,101 @@
+.game {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#startButton {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  width: 60vw;
+  max-width: 300px;
+  padding: 16px;
+  margin: 12px;
+  border: 4px solid #444;
+  border-radius: 8px;
+  background-color: palegreen;
+  cursor: pointer;
+  box-shadow: 0 6px 1px #333;
+}
+
+#startButton:hover {
+  box-shadow: 0 4px 1px #333;
+  position: relative;
+  top: 2px;
+}
+
+#startButton:active {
+  box-shadow: 0 0 2px #333;
+  position: relative;
+  top: 6px;
+  background-color: lightcoral;
+}
+
+#startButton:disabled {
+  box-shadow: 0 0 1px #333;
+  position: relative;
+  top: 6px;
+  background-color: #999;
+}
+
+#selectButtons {
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+#selectButtons .selectButton {
+  width: 100px;
+  height: 100px;
+  margin: 12px;
+  border: 4px solid #333;
+  border-radius: 8px;
+  background-color: palegreen;
+  cursor: pointer;
+  box-shadow: 0 8px 1px #333;
+}
+
+#selectButtons .selectButton:hover {
+  box-shadow: 0 4px 1px #333;
+  position: relative;
+  top: 4px;
+}
+
+#selectButtons .selectButton:active {
+  box-shadow: 0 0 1px #333;
+  position: relative;
+  top: 8px;
+  background-color: lightcoral;
+}
+
+#selectButtons .selectButton:disabled.selected {
+  box-shadow: 0 0 1px #333;
+  position: relative;
+  top: 8px;
+  background-color: lightcoral;
+}
+
+#selectButtons .selectButton:disabled {
+  box-shadow: 0 0 1px #333;
+  position: relative;
+  top: 8px;
+  background-color: #999;
+}
+
+#selectButtons .selectButton img {
+  display: block;
+  width: 100%;
+}
+
+#enemyHand {
+  text-align: center;
+}
+
+#enemyHand img {
+  height: 60vw;
+  max-height: 300px;
+}
+/*# sourceMappingURL=style.css.map */

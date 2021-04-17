@@ -5,18 +5,29 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/style.css">
   <title>Document</title>
 </head>
 
 <body>
-  <div>
-    <h2>じゃんけん？</h2>
-    <button>✊</button>
-    <button>✌️</button>
-    <button>✋</button>
-    <p>結果</p>
-    <div id="result"></div>
+  <h1>じゃんけんゲーム！</h1>
+  <div class="game">
+    <h1 id="resultText">じゃんけん？</h1>
+    <div id="enemyHand">
+      <img src="images/janken_gu.png" alt="enemyHand">
+    </div>
+    <div id="selectButtons">
+      <button class='selectButton' data-hand='gu'>
+        <img src="images/janken_gu.png" alt="gu">
+      </button>
+      <button class='selectButton' data-hand='choki'>
+        <img src="images/janken_choki.png" alt="choki">
+      </button>
+      <button class='selectButton' data-hand='pa'>
+        <img src="images/janken_pa.png" alt="pa">
+      </button>
+    </div>
+    <button id='startButton'>GAME START</button>
   </div>
   <script src="index.js"></script>
 </body>
