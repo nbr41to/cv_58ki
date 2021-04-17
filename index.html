@@ -5,16 +5,19 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="./scss/style.css">
   <title>Document</title>
 </head>
 
 <body>
   <div>
     <h2>じゃんけん？</h2>
-    <button onclick="janken(0)">✊</button>
-    <button onclick="janken(1)">✌️</button>
-    <button onclick="janken(2)">✋</button>
+    <input type="button" value="Start" onclick="start()">
+    <div id="hand">
+      <!-- <img src="./img/gu.png" alt="" id='gu' onclick="janken(0)">
+      <img src="./img/cho.png" alt="" id='cho' onclick="janken(1)">
+      <img src="./img/pa.png" alt="" id='pa' onclick="janken(2)"> -->
+    </div>
     <p>結果</p>
     <div id="result"></div>
   </div>
@@ -22,3 +25,7 @@
 </body>
 
 </html>
+
+<!-- <button onclick="janken(0)">✊</button> -->
+<!-- <button onclick="janken(1)">✌️</button> -->
+<!-- <button onclick="janken(2)">✋</button> -->
