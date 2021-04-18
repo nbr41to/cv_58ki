@@ -1,99 +1,119 @@
 
-let meehandw = '';
+//勝ち負け判定
+let timeoutId = undefined;
+let meehand = '';
 let youhandw = '';
-
-//要素の追加
-const d = document.getElementById('result');
-function addgame () {
-  const element = document.createElement('p');
-  element.id = 'game';
-  element.innerHTML = ''
-
-  d.appendChild(element);
-}
-function addmee () {
-  const element = document.createElement('p');
-  element.id = 'mee';
-  element.innerHTML = ''
-
-  d.appendChild(element);
-}
-function addyou () {
-  const element = document.createElement('p');
-  element.id = 'you';
-  element.innerHTML = ''
-
-  d.appendChild(element);
-}
-addgame();
-addmee();
-addyou();
-//要素の追加
-
-
-
-//clickEvent
-let btn1 = document.querySelectorAll('button')[0]
-let btn2 = document.querySelectorAll('button')[1]
-let btn3 = document.querySelectorAll('button')[2]
-
-btn1.addEventListener('click', function (event) {
-
-  meehandw = event.target.textContent;
-  change();
-}, false);
-btn2.addEventListener('click', function (event) {
-
-  meehandw = event.target.textContent;
-  change();
-}, false);
-btn3.addEventListener('click', function (event) {
-
-  meehandw = event.target.textContent;
-  change();
-}, false);
-  //改善点：ボタン以外も押せてしまう
-
-  function change () {
-  //you
-  const n = Math.floor(Math.random() * 3);
-  if (n === 0) {
-    youhandw = "✊";
-  } else if (n === 1) {
-    youhandw = "✌";
-  } else if (n === 2) {
-    youhandw = "✋";
-  } else {
-    youhandw = "✋";
+meehand = 'gu';
+//スタート
+const _start = document.getElementById('start');
+_start.addEventListener('click', () => {
+  if (_start.classList.contains('inactive')) {
+    return;
   }
-  //you
+  _start.classList.add('inactive');
+  timeoutId = setInterval(roulette, 300);
+});
+const you = document.getElementById('you');
+const youhand = document.createElement('img');
+youhand.src = 'img/janken_gu.png';
+you.appendChild(youhand);
 
+function roulette () {
+  const images = [
+    {key: 'gu', src: 'img/janken_gu.png'},
+    {key: 'choki', src: 'img/janken_choki.png'},
+    {key: 'pa', src: 'img/janken_pa.png'},
+  ];
+  let i = Math.floor(Math.random() * images.length);
+  youhand.src = images[i].src;
+  youhandw = images[i].key;
+  // console.log(youhandw);
+}
+function spin () {
+  roulette ();
+  timeoutId = setTimeout(() => {
+    spin();
+  }, 300);
+}
+function roulettestop () {
+  clearTimeout(timeoutId);
+}
+const startbtn = document.getElementById('btn');
+const img_elementgu = document.createElement('img');
+img_elementgu.src= 'img/janken_gu.png';
+img_elementgu.id = "gu";
+img_elementgu.width = 200;
+img_elementgu.height = 200;
+startbtn.appendChild(img_elementgu);
+const img_elementchoki = document.createElement('img');
+img_elementchoki.src= 'img/janken_choki.png';
+img_elementchoki.id ="choki";
+img_elementchoki.width = 200;
+img_elementchoki.height = 200;
+startbtn.appendChild(img_elementchoki);
+const img_elementpa = document.createElement('img');
+img_elementpa.src= 'img/janken_pa.png';
+img_elementpa.id="pa";
+img_elementpa.width = 200;
+img_elementpa.height = 200;
+startbtn.appendChild(img_elementpa);
+//スタート
+
+// //clickEvent
+const gu = document.getElementById('gu');
+const choki = document.getElementById('choki');
+const pa = document.getElementById('pa');
+gu.addEventListener('click', function () {
+  if (gu.classList.contains('inactive')) {
+    return;
+  }
+  meehand = 'gu';
+  gu.classList.add('choice', 'inactive');
+  choki.classList.add('unchoice', 'inactive');
+  pa.classList.add('unchoice', 'inactive');
+  roulettestop();
+  console.log(meehand);
+  jatch();
+}, false);
+choki.addEventListener('click', function () {
+  if (choki.classList.contains('inactive')) {
+    return;
+  }
+  meehand = 'choki';
+  choki.classList.add('choice', 'inactive');
+  gu.classList.add('unchoice', 'inactive');
+  pa.classList.add('unchoice', 'inactive');
+  roulettestop();
+  console.log(meehand);
+  jatch();
+}, false);
+pa.addEventListener('click', function () {
+  if (pa.classList.contains('inactive')) {
+    return;
+  }
+  meehand = 'pa';
+  pa.classList.add('choice', 'inactive')
+  choki.classList.add('unchoice', 'inactive');
+  gu.classList.add('unchoice', 'inactive');
+  roulettestop();
+  console.log(meehand);
+  jatch();
+}, false);
   //勝敗
+function jatch () {
+  console.log(youhandw);
+  console.log(meehand);
   let issue = 'You Win!';
-  if ((meehandw === "✊" && youhandw === "✊") || (meehandw === "✌" && youhandw === "✌") || (meehandw === "✋" && youhandw === "✋")) {
+  if ((meehand === 'gu' && youhandw === 'gu') || (meehand === 'choki' && youhandw === 'choki') || (meehand === 'pa' && youhandw === 'pa')) {
     issue = 'Draw';
-  } else if ((meehandw === "✊" && youhandw === "✋") || (meehandw === "✌" && youhandw === "✊") || (meehandw === "✋" && youhandw === "✌")) {
+  } else if ((meehand === 'gu' && youhandw === 'pa') || (meehand === 'choki' && youhandw === 'gu') || (meehand === 'pa' && youhandw === 'choki')) {
     issue = 'You Lose';
-  } else if ((meehandw === "✊" && youhandw === "✌") || (meehandw === "✌" && youhandw === "✋") || (meehandw === "✋" && youhandw === "✊")) {
+  } else if ((meehand === 'gu' && youhandw === 'choki') || (meehand === 'choki' && youhandw === 'pa') || (meehand === 'pa' && youhandw === 'gu')) {
     issue = 'You Win!';
   } else {
     issue = 'ボタンを押してください';
   }
-  //勝敗
-
-  const funcgame = () => {
-    document.getElementById('game').innerHTML = "<p>" + issue + "</p>";
-  }
-  const funcmee = () => {
-    document.getElementById('mee').innerHTML = "<p>あなた：" + meehandw + "</p>";
-  }
-  const funcyou = () => {
-    document.getElementById('you').innerHTML = "<p>あいて：" + youhandw + "</p>"
-  }
-  funcgame();
-  funcmee();
-  funcyou();
+  document.getElementById('result').innerHTML = "<p>" + issue + "</p>";
 }
-  
-// }, false);
+ //勝敗
 //clickEvent
