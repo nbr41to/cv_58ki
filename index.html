@@ -11,7 +11,7 @@
 
 <body>
   <div id="start">
-    <h2>じゃんけん？</h2>
+    <h2>最初は？</h2>
     <a href="#next">✊</a>
     <a href="#reset">✌️</a>
     <a href="#reset">✋</a>
@@ -21,13 +21,17 @@
   </div>
   <div id="next">
     <h2>じゃんけん？</h2>
-    <button type="button" id="gu" onClick="func1()">✊</button>
-    <button type="button" id="chi" onClick="func2()">✌️</button>
-    <button type="button" id="pa" onClick="func3()">✋</button>
-    <p>結果</p>
-    <div id="result"></div>
+      <a id="gu" class="hand">✊</a>
+      <a id="chi" class="hand">✌️</a>
+      <a id="pa" class="hand">✋</a>
+      <p>結果は…</p>
+      <div id="result"></div>
+      <div id="reload">
+        <a href="#start">最初から</a>
+        <a>もう一度</a>
+      </div>
   </div>
-  <script src="index.js"></script>
+  <script src="main.js"></script>
 </body>
 
 </html>
