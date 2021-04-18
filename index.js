@@ -78,7 +78,7 @@ gu.addEventListener('click', function () {
   choki.classList.add('unchoice', 'inactive');
   pa.classList.add('unchoice', 'inactive');
   roulettestop();
-  jatch();
+  judge();
   replay();
 }, false);
 choki.addEventListener('click', function () {
@@ -90,7 +90,7 @@ choki.addEventListener('click', function () {
   gu.classList.add('unchoice', 'inactive');
   pa.classList.add('unchoice', 'inactive');
   roulettestop();
-  jatch();
+  judge();
   replay();
 }, false);
 pa.addEventListener('click', function () {
@@ -102,13 +102,13 @@ pa.addEventListener('click', function () {
   choki.classList.add('unchoice', 'inactive');
   gu.classList.add('unchoice', 'inactive');
   roulettestop();
-  jatch();
+  judge();
   replay();
 }, false);
 //clickEvnet
 
 //勝敗
-function jatch () {
+function judge () {
   let issue = 'You Win!';
   if ((meehand === 'gu' && youhandw === 'gu') || (meehand === 'choki' && youhandw === 'choki') || (meehand === 'pa' && youhandw === 'pa')) {
     issue = 'Draw';
