@@ -2,6 +2,35 @@ let timeoutId = undefined;
 let meehand = '';
 let youhandw = '';
 //スタート
+
+const you = document.getElementById('you');
+const youhand = document.createElement('img');
+youhand.src = 'img/janken_gu.png';
+you.appendChild(youhand);
+
+const startbtn = document.getElementById('btn');
+const img_elementgu = document.createElement('img');
+img_elementgu.src= 'img/janken_gu.png';
+img_elementgu.id = "gu";
+img_elementgu.width = 200;
+img_elementgu.height = 200;
+startbtn.appendChild(img_elementgu);
+const img_elementchoki = document.createElement('img');
+img_elementchoki.src= 'img/janken_choki.png';
+img_elementchoki.id ="choki";
+img_elementchoki.width = 200;
+img_elementchoki.height = 200;
+startbtn.appendChild(img_elementchoki);
+const img_elementpa = document.createElement('img');
+img_elementpa.src= 'img/janken_pa.png';
+img_elementpa.id="pa";
+img_elementpa.width = 200;
+img_elementpa.height = 200;
+startbtn.appendChild(img_elementpa);
+
+startbtn.style.display = "none";
+you.style.display = "none";
+
 const start = document.getElementById('start');
 start.addEventListener('click', () => {
   if (start.classList.contains('inactive')) {
@@ -9,11 +38,10 @@ start.addEventListener('click', () => {
   }
   start.classList.add('inactive');
   timeoutId = setInterval(roulette, 300);
+  startbtn.style.display = "flex";
+  you.style.display = "flex";
+
 });
-const you = document.getElementById('you');
-const youhand = document.createElement('img');
-youhand.src = 'img/janken_gu.png';
-you.appendChild(youhand);
 
 function roulette () {
   const images = [
@@ -35,26 +63,6 @@ function spin () {
 function roulettestop () {
   clearTimeout(timeoutId);
 }
-
-const startbtn = document.getElementById('btn');
-const img_elementgu = document.createElement('img');
-img_elementgu.src= 'img/janken_gu.png';
-img_elementgu.id = "gu";
-img_elementgu.width = 200;
-img_elementgu.height = 200;
-startbtn.appendChild(img_elementgu);
-const img_elementchoki = document.createElement('img');
-img_elementchoki.src= 'img/janken_choki.png';
-img_elementchoki.id ="choki";
-img_elementchoki.width = 200;
-img_elementchoki.height = 200;
-startbtn.appendChild(img_elementchoki);
-const img_elementpa = document.createElement('img');
-img_elementpa.src= 'img/janken_pa.png';
-img_elementpa.id="pa";
-img_elementpa.width = 200;
-img_elementpa.height = 200;
-startbtn.appendChild(img_elementpa);
 //スタート
 
 // //clickEvent
@@ -111,6 +119,7 @@ function jatch () {
   } else {
     issue = 'ボタンを押してください';
   }
+  document.getElementById('result').style.display = "block";
   document.getElementById('result').innerHTML = "<p>" + issue + "</p>";
 }
 //勝敗
@@ -121,9 +130,10 @@ function replay () {
   start.textContent = 'REPLAY';
   start.addEventListener('click', () => {
     gu.classList.remove('choice', 'unchoice', 'inactive');
-  choki.classList.remove('choice', 'unchoice', 'inactive');
-  pa.classList.remove('choice', 'unchoice', 'inactive');
-  start.textContent = 'START';
+    choki.classList.remove('choice', 'unchoice', 'inactive');
+    pa.classList.remove('choice', 'unchoice', 'inactive');
+    start.textContent = 'START';
+    document.getElementById('result').style.display = "none";
   });
 }
 //replay
