@@ -1,16 +1,13 @@
-
-//勝ち負け判定
 let timeoutId = undefined;
 let meehand = '';
 let youhandw = '';
-meehand = 'gu';
 //スタート
-const _start = document.getElementById('start');
-_start.addEventListener('click', () => {
-  if (_start.classList.contains('inactive')) {
+const start = document.getElementById('start');
+start.addEventListener('click', () => {
+  if (start.classList.contains('inactive')) {
     return;
   }
-  _start.classList.add('inactive');
+  start.classList.add('inactive');
   timeoutId = setInterval(roulette, 300);
 });
 const you = document.getElementById('you');
@@ -27,7 +24,6 @@ function roulette () {
   let i = Math.floor(Math.random() * images.length);
   youhand.src = images[i].src;
   youhandw = images[i].key;
-  // console.log(youhandw);
 }
 function spin () {
   roulette ();
@@ -35,9 +31,11 @@ function spin () {
     spin();
   }, 300);
 }
+
 function roulettestop () {
   clearTimeout(timeoutId);
 }
+
 const startbtn = document.getElementById('btn');
 const img_elementgu = document.createElement('img');
 img_elementgu.src= 'img/janken_gu.png';
@@ -72,8 +70,8 @@ gu.addEventListener('click', function () {
   choki.classList.add('unchoice', 'inactive');
   pa.classList.add('unchoice', 'inactive');
   roulettestop();
-  console.log(meehand);
   jatch();
+  replay();
 }, false);
 choki.addEventListener('click', function () {
   if (choki.classList.contains('inactive')) {
@@ -84,8 +82,8 @@ choki.addEventListener('click', function () {
   gu.classList.add('unchoice', 'inactive');
   pa.classList.add('unchoice', 'inactive');
   roulettestop();
-  console.log(meehand);
   jatch();
+  replay();
 }, false);
 pa.addEventListener('click', function () {
   if (pa.classList.contains('inactive')) {
@@ -96,13 +94,13 @@ pa.addEventListener('click', function () {
   choki.classList.add('unchoice', 'inactive');
   gu.classList.add('unchoice', 'inactive');
   roulettestop();
-  console.log(meehand);
   jatch();
+  replay();
 }, false);
-  //勝敗
+//clickEvnet
+
+//勝敗
 function jatch () {
-  console.log(youhandw);
-  console.log(meehand);
   let issue = 'You Win!';
   if ((meehand === 'gu' && youhandw === 'gu') || (meehand === 'choki' && youhandw === 'choki') || (meehand === 'pa' && youhandw === 'pa')) {
     issue = 'Draw';
@@ -115,5 +113,17 @@ function jatch () {
   }
   document.getElementById('result').innerHTML = "<p>" + issue + "</p>";
 }
- //勝敗
-//clickEvent
+//勝敗
+
+//replay
+function replay () {
+  start.classList.remove('inactive');
+  start.textContent = 'REPLAY';
+  start.addEventListener('click', () => {
+    gu.classList.remove('choice', 'unchoice', 'inactive');
+  choki.classList.remove('choice', 'unchoice', 'inactive');
+  pa.classList.remove('choice', 'unchoice', 'inactive');
+  start.textContent = 'START';
+  });
+}
+//replay

@@ -49,10 +49,12 @@
 #result {
   width: 300px;
   height: 200px;
-  font-size: 50px;
   margin: 0 auto;
   text-align: center;
-  font-weight: bold;
+  font-size:60px;
+  font-weight:bold;
+  color: #FFF;
+  text-shadow: 0 0 0.2em rgba(0,0,0,1);
   
   user-select: none;
 }
