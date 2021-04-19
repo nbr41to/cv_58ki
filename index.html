@@ -14,9 +14,11 @@
     <h2>じゃんけん？</h2>
     <input type="button" value="Start" onclick="start()">
     <div id="hand">
-      <!-- <img src="./img/gu.png" alt="" id='gu' onclick="janken(0)">
-      <img src="./img/cho.png" alt="" id='cho' onclick="janken(1)">
-      <img src="./img/pa.png" alt="" id='pa' onclick="janken(2)"> -->
+      <div class="btn">
+        <a href="#" class="btn_gu" onclick="janken(0)"><img src="./img/gu.png" alt="" class="btn_gu_img"></a>
+        <a href="#" class="btn_cho" onclick="janken(1)"><img src="./img/cho.png" alt="" class="btn_cho_img"></a>
+        <a href="#" class="btn_pa" onclick="janken(2)"><img src="./img/pa.png" alt="" class="btn_pa_img"></a>
+      </div>
     </div>
     <p>結果</p>
     <div id="result"></div>
@@ -25,7 +27,3 @@
 </body>
 
 </html>
-
-<!-- <button onclick="janken(0)">✊</button> -->
-<!-- <button onclick="janken(1)">✌️</button> -->
-<!-- <button onclick="janken(2)">✋</button> -->
