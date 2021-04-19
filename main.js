@@ -1,24 +1,11 @@
 function janken () {
   /* 変数定義 ************************/
   // ジャンケンの手の番号を設定
-  const GU    = document.getElementById('gu')
-  const CHOKI = document.getElementById('chi')
-  const PA    = document.getElementById('pa')
+  var GU    = document.getElementById('gu')
+  var CHOKI = document.getElementById('chi')
+  var PA    = document.getElementById('pa')
   
-  /* 関数定義 ************************/
-  // 人間に手を入力してもらう機能
-  function getHumHand() {
-    var yourHand = document.getElementsByClassName('hand');
-    for (var i=0; i < yourHand.length; i++) {
-      yourHand[i].addEventListener('click', () => {
-         return  hum = document.getElementById('gu')
-        // console.log(hum)
-      },false)
-    }
-  }
-
-  getHumHand()
-  
+  /* 関数定義 ************************/  
   // コンピュータの手を決める
   const comHand = [GU, CHOKI, PA]
   const handNo = Math.floor(Math.random() * comHand.length)
@@ -60,16 +47,19 @@ function janken () {
   }
 
   /* 実行する処理 ************************/
-  // const hum = getHumHand()
-  const hum = GU
+  // var hum = getHumHand()
+  let yourHand = document.getElementsByClassName('hand');
+  let hum = yourHand
     
-
-  hum.addEventListener('click', () => {
-    const result = document.getElementById('result')
-    const resultMsg = document.createElement('p')
-    resultMsg.textContent = getResultMsg(com, hum)
-    result.appendChild(resultMsg)
-    resultMsg.scrollIntoView({block:"start"})
-  })
+  for (let i = 0; i < yourHand.length; i++) {
+    hum[i].addEventListener('click', () => {
+      hum = yourHand[i]
+      const result = document.getElementById('result')
+      const resultMsg = document.createElement('p')
+      resultMsg.textContent = getResultMsg(com, hum)
+      result.appendChild(resultMsg)
+      resultMsg.scrollIntoView({block:"start"})
+    })
+  }
 }
 janken();
