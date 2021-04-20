@@ -1,9 +1,9 @@
 function janken () {
   /* 変数定義 ************************/
-  // ジャンケンの手の番号を設定
-  var GU    = document.getElementById('gu')
-  var CHOKI = document.getElementById('chi')
-  var PA    = document.getElementById('pa')
+  // ジャンケンの手を設定
+  const GU    = document.getElementById('gu')
+  const CHOKI = document.getElementById('chi')
+  const PA    = document.getElementById('pa')
   
   /* 関数定義 ************************/  
   // コンピュータの手を決める
@@ -35,7 +35,6 @@ function janken () {
   }
 
   // リロードボタンの作成
-  // const reload =document.querySelectorAll('.reload');
   const reload =document.getElementById('reload');
   reload.addEventListener('click',() => {
     window.location.reload();
@@ -45,15 +44,13 @@ function janken () {
   function getResultMsg(com, hum) {
     return getResult(com, hum) + '\nあなたは「' + getHandName(hum) + '」を出しました。\n' + 'コンピュータの出した手は「' + getHandName(com) + '」でした。';
   }
-
+  
   /* 実行する処理 ************************/
-  // var hum = getHumHand()
-  let yourHand = document.getElementsByClassName('hand');
-  let hum = yourHand
-    
+  const yourHand = document.getElementsByClassName('hand');
+  
   for (let i = 0; i < yourHand.length; i++) {
-    hum[i].addEventListener('click', () => {
-      hum = yourHand[i]
+    yourHand[i].addEventListener('click', () => {
+      const hum = yourHand[i]
       const result = document.getElementById('result')
       const resultMsg = document.createElement('p')
       resultMsg.textContent = getResultMsg(com, hum)
