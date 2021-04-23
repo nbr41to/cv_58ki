@@ -1,28 +1,17 @@
-document.getElementById("hand").style.visibility ="hidden";
+document.getElementById("hand").style.visibility = "hidden";
 
 function start() {
   const hand = document.getElementById("hand");
 	if(hand.style.visibility=="visible"){
 		// hiddenで非表示
 		hand.style.visibility ="hidden";
+    document.querySelector('.btn_start').innerHTML = "Start";
+    document.getElementById('result').innerHTML = "";
 	}else{
 		// visibleで表示
 		hand.style.visibility ="visible";
   }
 }
-// const image = document.getElementById('');
-// let stat = false;
-
-//     function janken() {
-//       if(stat) {
-//         image.classList.add('off');
-//         image.classList.remove('on');
-//       } else {
-//         image.classList.add('on');
-//         image.classList.remove('off');
-//       }
-//       stat = !stat;
-//     }
 
 function janken(playerSelect) {
   const cpuSelect = Math.floor(Math.random() * 3);
@@ -56,7 +45,6 @@ function janken(playerSelect) {
     }
   }
 
-  console.log(result);
 
   if (result === "負けました。") {
     document.getElementById('result').innerHTML = `
@@ -76,4 +64,7 @@ function janken(playerSelect) {
     <P>あなた：${hand[playerSelect]}</P>
     <P>CPU：${hand[cpuSelect]}</P>`;
   }
+
+  console.log(result);
+  document.querySelector('.btn_start').innerHTML = "もう一度やる";
 }
