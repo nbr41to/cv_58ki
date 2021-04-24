@@ -93,7 +93,7 @@ for(let i = 0; i < suits.length; i++) {
         res3.classList.add('back');
         res4.classList.add('back');
         game();
-      }, 1000);
+      }, 300);
     }
     let count = document.getElementsByClassName('match').length;
     if (count === cards.length) {
