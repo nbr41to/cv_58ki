@@ -16,8 +16,20 @@ function start() {
 function janken(playerSelect) {
   const cpuSelect = Math.floor(Math.random() * 3);
   const hand = ["✊", "✌", "✋"];
-  // console.log(cpuSelect);
-  // console.log(playerSelect);
+  const gu = document.querySelector('.btn_gu')
+  const cho = document.querySelector('.btn_cho')
+  const pa = document.querySelector('.btn_pa')
+
+  if (playerSelect === 0) {
+    gu.setAttribute("disabled", true)
+  }
+  if (playerSelect === 1) {
+    cho.setAttribute("disabled", true)
+  }
+  if (playerSelect === 2) {
+    pa.setAttribute("disabled", true)
+  }
+
   if (playerSelect === cpuSelect) { // あいこ
     result = "あいこです。";
   } else {
