@@ -1,29 +1,27 @@
 <!DOCTYPE html>
 <html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./scss/style.css" />
+    <title>Document</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./scss/style.css">
-  <title>Document</title>
-</head>
-
-<body>
-  <div>
-    <h2>じゃんけん？</h2>
-    <a href="#" class="btn_start" onclick="start()">Start</a>
-    <div id="hand">
-      <div class="btn">
-        <button href="#" class="btn_gu" onclick="janken(0)"><img src="./img/gu.png" alt="" class="btn_gu_img"></button>
-        <button href="#" class="btn_cho" onclick="janken(1)"><img src="./img/cho.png" alt="" class="btn_cho_img"></button>
-        <button href="#" class="btn_pa" onclick="janken(2)"><img src="./img/pa.png" alt="" class="btn_pa_img"></button>
+  <body>
+    <div>
+      <h2>じゃんけん？</h2>
+      <a href="#" class="btn_start" onclick="start()">Start</a>
+      <div id="hand">
+        <div class="btn">
+          <button href="#" class="btn_gu" onclick="janken(0)"><img src="./img/gu.png" alt="" class="btn_gu_img" /></button>
+          <button href="#" class="btn_cho" onclick="janken(1)"><img src="./img/cho.png" alt="" class="btn_cho_img" /></button>
+          <button href="#" class="btn_pa" onclick="janken(2)"><img src="./img/pa.png" alt="" class="btn_pa_img" /></button>
+        </div>
       </div>
+      <p>結果</p>
+      <div id="result"></div>
     </div>
-    <p>結果</p>
-    <div id="result"></div>
-  </div>
-  <script src="index.js"></script>
-</body>
-
+    <script src="index.js"></script>
+  </body>
 </html>
