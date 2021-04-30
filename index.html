@@ -9,18 +9,24 @@
   </head>
 
   <body>
-    <div>
-      <h2>じゃんけん？</h2>
-      <a href="#" class="btn_start" onclick="start()">Start</a>
-      <div id="hand">
-        <div class="btn">
-          <button href="#" class="btn_gu" onclick="janken(0)"><img src="./img/gu.png" alt="" class="btn_gu_img" /></button>
-          <button href="#" class="btn_cho" onclick="janken(1)"><img src="./img/cho.png" alt="" class="btn_cho_img" /></button>
-          <button href="#" class="btn_pa" onclick="janken(2)"><img src="./img/pa.png" alt="" class="btn_pa_img" /></button>
-        </div>
+    <h1>じゃんけんゲーム</h1>
+    <div class="game">
+      <h1 id="resultText">じゃんけん？</h1>
+      <div id="enemyHand">
+        <img src="./img/gu.png" alt="enemyHand" />
       </div>
-      <p>結果</p>
-      <div id="result"></div>
+      <div id="selectButtons">
+        <button class="selectButton" data-hand="gu">
+          <img src="./img/gu.png" alt="gu" />
+        </button>
+        <button class="selectButton" data-hand="cho">
+          <img src="./img/cho.png" alt="cho" />
+        </button>
+        <button class="selectButton" data-hand="pa">
+          <img src="./img/pa.png" alt="pa" />
+        </button>
+      </div>
+      <button id="startButton">GAME START</button>
     </div>
     <script src="index.js"></script>
   </body>
