@@ -14,7 +14,11 @@ td.card.back {
   /* 最優先 */
 }
 
+td.open {
+  pointer-events: none;
+}
+
 .match {
-  filter: brightness(20%);
+  visibility: hidden;
   pointer-events: none;
 }

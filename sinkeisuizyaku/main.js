@@ -49,6 +49,7 @@ for(let i = 0; i < suits.length; i++) {
       cardtachi[i].addEventListener('click', (e) => {
         c = e.target;
         c.classList.remove('back');
+        c.classList.add('open')
         m++;
         switch(m) {
           case 1:
@@ -56,10 +57,9 @@ for(let i = 0; i < suits.length; i++) {
             break;
           case 2:
             judge2();
-            console.log(res1);
-            console.log(res2);
-            judge3();
             break;
+          case 3:
+            judge3();
           default:
             return;
         }
@@ -81,33 +81,34 @@ for(let i = 0; i < suits.length; i++) {
     let source = c.outerHTML;
     let res = parseInt(source.replace(/[^0-9]/g, ''), 10);
     res2 = res
-  }
-  function judge3() {
     if (res1 === res2) {
       res3.classList.add('match');
       res4.classList.add('match');
       game();
     } else {
-      console.log('no');
-      window.setTimeout(function() {
-        res3.classList.add('back');
-        res4.classList.add('back');
-        game();
-      }, 300);
+      res3.classList.remove('open');
+      res4.classList.remove('open');
+      game();
     }
-    let count = document.getElementsByClassName('match').length;
-    if (count === cards.length) {
-      let reset = window.confirm('reset?');
-      if (reset) {
-        let matchElements = [];
-        for(let i = 0; i < cards.length; i++) {
-          matchElements[i] = document.getElementsByClassName('match')[i];
-          matchElements[i].classList.remove('match');
-          matchElements[i].classList.add('back');
-        }
-      } else {
-        console.log('キャンセルされました');
+  }
+  function judge3 () {
+      res3.classList.add('back');
+      res4.classList.add('back');
+      res3.classList.remove('open');
+      res4.classList.remove('open');
+  }
+  let count = document.getElementsByClassName('match').length;
+  if (count === cards.length) {
+    let reset = window.confirm('reset?');
+    if (reset) {
+      let matchElements = [];
+      for(let i = 0; i < cards.length; i++) {
+        matchElements[i] = document.getElementsByClassName('match')[i];
+        matchElements[i].classList.remove('match');
+        matchElements[i].classList.add('back');
       }
+    } else {
+      console.log('キャンセルされました');
     }
   }
     game();
