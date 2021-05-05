@@ -1,12 +1,12 @@
 window.onload = function() {
   function Card(suit,num) {
-  this.suit = suit;
-  this.num = num;
-  this.front;
-  this.setFront = function() {
-    this.front = `${this.suit}${this.num<10 ? '0' : ''}${this.num}.gif`;
+    this.suit = suit;
+    this.num = num;
+    this.front;
+    this.setFront = function() {
+      this.front = `${this.suit}${this.num<10 ? '0' : ''}${this.num}.gif`;
+    }
   }
-}
 
 const cards = [];
 const suits = ['s', 'd', 'h', 'c'];
@@ -26,21 +26,25 @@ function shuffle() {
     cards[r] = ccard;
   }
 }
-shuffle();
 
-const table = document.getElementById('table');
-for(let i = 0; i < suits.length; i++) {
-  let tr = document.createElement('tr');
-  for(let j = 0; j < 13; j++) {
-    let td = document.createElement('td');
-    let tempCard = cards[i*13+j];
-    td.classList.add('card', 'back');
-    td.style.backgroundImage=`url(images/${tempCard.front})`;
-    tr.appendChild(td);
+function cardset () {
+  const table = document.getElementById('table');
+  for(let i = 0; i < suits.length; i++) {
+    let tr = document.createElement('tr');
+    for(let j = 0; j < 13; j++) {
+      let td = document.createElement('td');
+      let tempCard = cards[i*13+j];
+      td.classList.add('card', 'back');
+      td.style.backgroundImage=`url(images/${tempCard.front})`;
+      tr.appendChild(td);
+    }
+    table.appendChild(tr);
   }
-  table.appendChild(tr);
-  }
+}
+  
   let c = '';
+  const counter = document.getElementById('result');
+
   function game () {
     const cardtachi = [];
     let m = 0;
@@ -57,6 +61,11 @@ for(let i = 0; i < suits.length; i++) {
             break;
           case 2:
             judge2();
+            counter.textContent = `${paircount}ペア`;
+            if (paircount === 26) {
+              counter.textContent = 'Congratulations!!'
+              setTimeout(reset, 1000);
+            }
             break;
           case 3:
             judge3();
@@ -66,10 +75,13 @@ for(let i = 0; i < suits.length; i++) {
       });
     }
   }
+
   let res1 = 0;
   let res2 = 0;
   let res3 = '';
   let res4 = '';
+  let paircount = 0;
+
   function judge1() {
     res3 = c;
     let source = c.outerHTML;
@@ -84,6 +96,7 @@ for(let i = 0; i < suits.length; i++) {
     if (res1 === res2) {
       res3.classList.add('match');
       res4.classList.add('match');
+      paircount++;
       game();
     } else {
       res3.classList.remove('open');
@@ -92,24 +105,33 @@ for(let i = 0; i < suits.length; i++) {
     }
   }
   function judge3 () {
-      res3.classList.add('back');
-      res4.classList.add('back');
-      res3.classList.remove('open');
-      res4.classList.remove('open');
+    res3.classList.add('back');
+    res4.classList.add('back');
+    res3.classList.remove('open');
+    res4.classList.remove('open');
   }
-  let count = document.getElementsByClassName('match').length;
-  if (count === cards.length) {
-    let reset = window.confirm('reset?');
-    if (reset) {
-      let matchElements = [];
-      for(let i = 0; i < cards.length; i++) {
-        matchElements[i] = document.getElementsByClassName('match')[i];
-        matchElements[i].classList.remove('match');
-        matchElements[i].classList.add('back');
-      }
-    } else {
-      console.log('キャンセルされました');
+  function tableremove () {
+    const table = document.getElementById('table');
+    while(table.firstChild) {
+      table.removeChild(table.firstChild);
     }
   }
-    game();
+  function reset () {
+    counter.textContent = '';
+    let count = document.getElementsByClassName('match').length;
+    if (count === cards.length) {
+      let reset = window.confirm('reset?');
+      if (reset) {
+        tableremove();
+        cardset();
+        paircount = 0;
+        game();
+      } else {
+        console.log('キャンセルされました');
+      }
+    }
+  }
+  shuffle();
+  cardset();
+  game();
 }
