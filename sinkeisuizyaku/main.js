@@ -53,7 +53,7 @@ function cardset () {
       cardtachi[i].addEventListener('click', (e) => {
         c = e.target;
         c.classList.remove('back');
-        c.classList.add('open')
+        c.classList.add('open');
         m++;
         switch(m) {
           case 1:
@@ -62,9 +62,21 @@ function cardset () {
           case 2:
             judge2();
             counter.textContent = `${paircount}ペア`;
-            if (paircount === 26) {
+            if (paircount === 8) {
+              counter.textContent = `${paircount}ペア
+お楽しみはこれからだ！`;
+            } else if (paircount === 14) {
+              counter.textContent = `${paircount}ペア
+そのデッキ回りすぎだろ…`;
+            } else if (paircount === 22) {
+              counter.textContent = `${paircount}ペア
+スゴイぞーカッコいいぞー！！`;
+            } else if (paircount === 25) {
+              counter.textContent = `${paircount}ペア
+ファイナルターン！`;
+            } else if (paircount === 26) {
               counter.textContent = 'Congratulations!!'
-              setTimeout(reset, 1000);
+              setTimeout(resetalert, 1000);
             }
             break;
           case 3:
@@ -81,7 +93,7 @@ function cardset () {
   let res3 = '';
   let res4 = '';
   let paircount = 0;
-
+  
   function judge1() {
     res3 = c;
     let source = c.outerHTML;
@@ -93,11 +105,14 @@ function cardset () {
     let source = c.outerHTML;
     let res = parseInt(source.replace(/[^0-9]/g, ''), 10);
     res2 = res
+    //カードを揃えてすぐ次のカードを開くと開いたままになってしまう
     if (res1 === res2) {
+      paircount++;
+      setTimeout(() => {
       res3.classList.add('match');
       res4.classList.add('match');
-      paircount++;
       game();
+    }, 300);
     } else {
       res3.classList.remove('open');
       res4.classList.remove('open');
@@ -116,22 +131,38 @@ function cardset () {
       table.removeChild(table.firstChild);
     }
   }
-  function reset () {
-    counter.textContent = '';
-    let count = document.getElementsByClassName('match').length;
-    if (count === cards.length) {
-      let reset = window.confirm('reset?');
-      if (reset) {
-        tableremove();
-        cardset();
-        paircount = 0;
-        game();
+  const resetalert = () => {
+    const options = {
+        text: 'もう一度デュエルを申し込みますか？',
+        buttons: {
+            cancel: 'デュエルしない',
+            ok: 'デュエルする'
+        }
+    };
+    swal(options).then(function(value){
+        if(value){
+          counter.textContent = '';
+          swal('この一戦でオレの運命が決まる！！\n勝負だ相棒！！');
+          tableremove();
+          cardset();
+          paircount = 0;
+          game();
       } else {
-        console.log('キャンセルされました');
-      }
-    }
+        tableremove();
+        bord.style.display = 'none';
+        start.style.display = 'block';
+        }
+    });
   }
-  shuffle();
-  cardset();
-  game();
+  const bord = document.getElementsByClassName('textboard')[0];
+  const start = document.getElementById('startbtn');
+  bord.style.display = 'none';
+  start.addEventListener('click', () => {
+    start.style.display = 'none';
+    bord.style.display = 'block';
+    shuffle();
+    cardset();
+    game();
+  });
 }
+

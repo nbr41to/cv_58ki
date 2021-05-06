@@ -1,3 +1,29 @@
+/* #startbtn {
+
+} */
+
+.btn--orange {
+  width: 200px;
+  height: 60px;
+  font-size: 40px;
+  color: #fff;
+  text-align: center;
+  line-height: 60px;
+  margin: 100px auto;
+  background-color: #eb6100;
+  border-bottom: 5px solid #b84c00;
+}
+.btn--orange:hover {
+  margin-top: 103px;
+  color: #fff;
+  background: #f56500;
+  border-bottom: 2px solid #b84c00;
+}
+.btn--shadow {
+  -webkit-box-shadow: 0 3px 5px rgba(0, 0, 0, .3);
+  box-shadow: 0 3px 5px rgba(0, 0, 0, .3);
+}
+
 table {
   margin: 10px auto;
 }
