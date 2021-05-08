@@ -43,6 +43,7 @@ start.addEventListener('click', () => {
 
 });
 
+let j = '';
 function roulette () {
   const images = [
     {key: 'gu', src: 'img/janken_gu.png'},
@@ -50,9 +51,16 @@ function roulette () {
     {key: 'pa', src: 'img/janken_pa.png'},
   ];
   let i = Math.floor(Math.random() * images.length);
-  youhand.src = images[i].src;
-  youhandw = images[i].key;
-}
+  if (i === j) {
+      i = Math.floor(Math.random() * images.length);
+      j = i;
+  } else if (i !== j) {
+    youhand.src = images[i].src;
+    youhandw = images[i].key;
+    j = i;
+    console.log(i);
+    }
+  }
 function spin () {
   roulette ();
   timeoutId = setTimeout(() => {
