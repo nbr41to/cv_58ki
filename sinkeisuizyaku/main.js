@@ -77,6 +77,16 @@ function cardset () {
             } else if (paircount === 26) {
               counter.textContent = 'Congratulations!!'
               setTimeout(resetalert, 1000);
+              clearTimeout(timeoutId);
+              elapsedTime = new Date(Date.now() - startTime);;
+              if (elapsedTime > 0) {
+                timecount.style.display = 'none';
+                const m = String(elapsedTime.getMinutes()).padStart(2, '0');
+                const s = String(elapsedTime.getSeconds()).padStart(2, '0');
+                const ms = String(elapsedTime.getMilliseconds()).padStart(3, '0');
+                counter.textContent = `Congratulations!!\nTIME:${m}:${s}.${ms}`;
+                // counter.textContent = `TIME:${elapsedTime}`
+              }
             }
             break;
           case 3:
@@ -131,6 +141,28 @@ function cardset () {
       table.removeChild(table.firstChild);
     }
   }
+  const timeattack = () => {
+    const options = {
+        text: 'タイムアタックしますか？',
+        buttons: {
+            cancel: 'しない',
+            ok: 'する'
+        }
+    };
+    swal(options).then(function(value){
+        if(value){
+          counter.textContent = '';
+          swal('START!');
+          startTime = Date.now();
+          countUp();
+          time.textContent = '00:00.000';
+          elapsedTime = 0;
+          timecount.style.display = 'block';
+        } else {
+          timecount.style.display = 'none';
+        }
+    });
+  }
   const resetalert = () => {
     const options = {
         text: 'もう一度デュエルを申し込みますか？',
@@ -143,12 +175,17 @@ function cardset () {
         if(value){
           counter.textContent = '';
           swal('この一戦でオレの運命が決まる！！\n勝負だ相棒！！');
+          timeattack();
           tableremove();
           cardset();
           paircount = 0;
+          time.textContent = '00:00.000';
+          elapsedTime = 0;
           game();
       } else {
         tableremove();
+        paircount = 0;
+        bord.textContent = '';
         bord.style.display = 'none';
         start.style.display = 'block';
         }
@@ -156,13 +193,32 @@ function cardset () {
   }
   const bord = document.getElementsByClassName('textboard')[0];
   const start = document.getElementById('startbtn');
+  const timecount = document.getElementById('time');
   bord.style.display = 'none';
+  timecount.style.display = 'none';
   start.addEventListener('click', () => {
     start.style.display = 'none';
     bord.style.display = 'block';
+    timeattack();
     shuffle();
     cardset();
     game();
   });
+
+  const time = document.getElementById('time');
+
+  let startTime;
+  let timeoutId;;
+
+  function countUp() {
+    const d = new Date(Date.now() - startTime);
+    const m = String(d.getMinutes()).padStart(2, '0');
+    const s = String(d.getSeconds()).padStart(2, '0');
+    const ms = String(d.getMilliseconds()).padStart(3, '0');
+    time.textContent = `${m}:${s}.${ms}`;
+    timeoutId = setTimeout(() => {
+      countUp();
+    }, 10);
+  }
 }
 
